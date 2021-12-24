@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frame</title>
+    <link rel="stylesheet" href="/static/foundation/css/foundation.min.css" />
+    <link rel="stylesheet" href="/static/frame/frame.css" />
+  </head>
+  <body>
+    <div class="controls-nav">
+      <br />
+      <h4>Switch mode:</h4>
+      <ul class="vertical menu">
+        <li class="is-active"><a href="#">Photo gallery</a></li>
+      </ul>
+      <ul class="vertical dropdown menu" data-dropdown-menu>
+        <li>
+          <a href="#">Fire Island Cam</a>
+          <ul class="vertical menu nested">
+            <li><a href="#">Ferry Cam</a></li>
+            <li><a href="#">Palms Bay Sunset</a></li>
+            <li><a href="#">CJs Central Cam</a></li>
+            <!-- ... -->
+          </ul>
+        </li>
+        <li><a href="#">Wolf Sanctuary Cam</a></li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+        <li><a href="#">Four</a></li>
+        <li><a href="#" onclick="toggleFullScreen();">Full screen</a></li>
+      </ul>
+    </div>
+
+    <div class="hd-webcam-container overlay">
+      <div class="iframe-cover"></div>
+      <!-- <iframe
+        src="https://embed.cdn-surfline.com/cams/594211c4d897669f0ca03fb7/c4f8ea034613e73ded92783682a45de3229c51ee"
+        class="hd-webcam"
+      ></iframe> -->
+      <!-- BAY CAM -->
+      <!-- <iframe
+        src="//video.nest.com/embedded/live/WsP35hLv1f?autoplay=1"
+        class="hd-webcam"
+      ></iframe> -->
+      <!-- PALMS VILLAGE GREEN CAM -->
+      <!-- <iframe
+        src="//video.nest.com/embedded/live/oRHGqamzOS?autoplay=1"
+        class="hd-webcam"
+      ></iframe> -->
+      <!-- Laguna Mountain Lodge cam -->
+      <!-- <iframe
+        src="https://ipcamlive.com/player/player.php?alias=5bc206bd09b49&autoplay=true"
+        class="hd-webcam"
+      >
+      </iframe> -->
+      <!-- Wolf Conservation Center -->
+      <iframe
+        src="https://g1.ipcamlive.com/player/player.php?alias=5c4b92d28788b&autoplay=1"
+        class="hd-webcam"
+      >
+      </iframe>
+    </div>
+
+    <!-- <div class="overlay">
+      <div class="fullscreen-image-slider">
+        <div
+          class="orbit"
+          role="region"
+          aria-label="FullScreen Pictures"
+          data-orbit
+        >
+          <ul class="orbit-container">
+            <li class="is-active orbit-slide">
+              <img
+                class="orbit-image"
+                src="/static/demo_images/beach.jpeg"
+                alt="Space"
+              />
+            </li>
+            <li class="orbit-slide">
+              <img
+                class="orbit-image"
+                src="/static/demo_images/plants.jpeg"
+                alt="Space"
+              />
+            </li>
+            <li class="orbit-slide">
+              <img
+                class="orbit-image"
+                src="/static/demo_images/trees.jpeg"
+                alt="Space"
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+
+    <script src="/static/foundation/js/vendor/jquery.min.js"></script>
+    <script src="/static/foundation/js/vendor/what-input.js"></script>
+    <script src="/static/foundation/js/vendor/foundation.min.js"></script>
+
+    <script src="/static/frame/frame.js"></script>
+  </body>
+</html>
