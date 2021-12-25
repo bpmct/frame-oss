@@ -80,7 +80,10 @@
               />
             </li> -->
             {% for image in google_photos %}
-            <li class="orbit-slide">
+            <li
+              class="orbit-slide"
+              loading="{{'eager' if loop.index < 9 else 'lazy' }}"
+            >
               <img class="orbit-image" src="{{ image }}" alt="Space" />
             </li>
             {% endfor %}
