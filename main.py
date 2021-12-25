@@ -72,7 +72,11 @@ def all_routes(text):
             except HttpError as err:
                 print(err)
 
-            return render_template("frame.html", google_photos=urls)
+            return render_template("photo_frame.html", google_photos=urls)
+        elif text == "fjsyDoKNNo_ferry_cam":
+            return render_template("iframe.html", frame_url="//video.nest.com/embedded/live/WsP35hLv1f?autoplay=1");
+        elif text == "fjsyDoKNNo_palms_village_cam":
+            return render_template("iframe.html", frame_url="//video.nest.com/embedded/live/oRHGqamzOS?autoplay=1");
         else:
             abort(404)
     else:
