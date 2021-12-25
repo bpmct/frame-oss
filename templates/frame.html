@@ -72,27 +72,18 @@
           data-orbit
         >
           <ul class="orbit-container">
-            <li class="is-active orbit-slide">
+            <!-- <li class="is-active orbit-slide">
               <img
                 class="orbit-image"
                 src="/static/demo_images/beach.jpeg"
                 alt="Space"
               />
-            </li>
+            </li> -->
+            {% for image in google_photos %}
             <li class="orbit-slide">
-              <img
-                class="orbit-image"
-                src="/static/demo_images/plants.jpeg"
-                alt="Space"
-              />
+              <img class="orbit-image" src="{{ image }}" alt="Space" />
             </li>
-            <li class="orbit-slide">
-              <img
-                class="orbit-image"
-                src="/static/demo_images/trees.jpeg"
-                alt="Space"
-              />
-            </li>
+            {% endfor %}
           </ul>
         </div>
       </div>
