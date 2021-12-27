@@ -54,3 +54,28 @@ iframe.hd-webcam {
   height: 100vh;
   background-color: #ccc;
 }
+
+.new-photos {
+  z-index: 5;
+  display: block;
+  position: absolute;
+  color: #fff;
+  bottom: 18px;
+  line-height: 22px;
+  padding: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: green;
+  text-align: center;
+  right: 18px;
+}
+
+.new-photos:hover {
+  color: #ccc;
+}
+
+.divider {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #000;
+}
