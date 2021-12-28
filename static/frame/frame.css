@@ -55,6 +55,14 @@ iframe.hd-webcam {
   background-color: #ccc;
 }
 
+.stay-awake {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  right: 100px;
+  top: 100px;
+}
+
 .new-photos {
   z-index: 5;
   display: block;
