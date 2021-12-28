@@ -11,10 +11,21 @@ from googleapiclient.errors import HttpError
 
 load_dotenv()
 
+# Supabase stuff
+# TODO: make optional for simple self-hosted installs
+from supabase import create_client, Client
+url: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_KEY")
+supabase: Client = create_client(url, key)
+
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
+
+    # Generate "Login with Google" link for Supabase
+    google_url = "https://tkcpbdawrrhatvriturr.supabase.co/auth/v1/callback"
+
     return render_template("homepage.html")
 
 @app.route('/<path:text>', methods=['GET', 'POST'])

@@ -4,3 +4,7 @@ __pycache__
 .DS_Store
 credentials.json
 token.json
+# Supabase
+**/supabase/.branches
+**/supabase/.temp
+**/supabase/.env
