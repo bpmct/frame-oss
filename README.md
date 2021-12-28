@@ -4,7 +4,7 @@ Digital photo frames powered by the web browser. Self-host or use [frames.bpmct.
 
 ## Recommended devices
 
-- Kindle Fire HD Tablet
+- [Kindle Fire HD Tablet](./docs/kindle-fire.md)
 
 ## Other devices / WIP
 
