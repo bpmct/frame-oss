@@ -8,3 +8,4 @@ token.json
 **/supabase/.branches
 **/supabase/.temp
 **/supabase/.env
+**/supabase/config.json

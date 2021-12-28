@@ -228,6 +228,14 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "psycopg2"
+version = "2.9.2"
+description = "psycopg2 - Python-PostgreSQL Database Adapter"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "pyasn1"
 version = "0.4.8"
 description = "ASN.1 types and codecs"
@@ -355,7 +363,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "25f7faf43311a4e55312bcad9f32d64625e5d5d9adf1b4fa44c1a72c87e928c5"
+content-hash = "678c9612475df7d4d02ef805bf8573f8644c330f09bcd745ca1275232b4ab204"
 
 [metadata.files]
 cachetools = [
@@ -522,6 +530,19 @@ protobuf = [
     {file = "protobuf-3.19.1-cp39-cp39-win_amd64.whl", hash = "sha256:77d2fadcf369b3f22859ab25bd12bb8e98fb11e05d9ff9b7cd45b711c719c002"},
     {file = "protobuf-3.19.1-py2.py3-none-any.whl", hash = "sha256:e813b1c9006b6399308e917ac5d298f345d95bb31f46f02b60cd92970a9afa17"},
     {file = "protobuf-3.19.1.tar.gz", hash = "sha256:62a8e4baa9cb9e064eb62d1002eca820857ab2138440cb4b3ea4243830f94ca7"},
+]
+psycopg2 = [
+    {file = "psycopg2-2.9.2-cp310-cp310-win32.whl", hash = "sha256:6796ac614412ce374587147150e56d03b7845c9e031b88aacdcadc880e81bb38"},
+    {file = "psycopg2-2.9.2-cp310-cp310-win_amd64.whl", hash = "sha256:dfc32db6ce9ecc35a131320888b547199f79822b028934bb5b332f4169393e15"},
+    {file = "psycopg2-2.9.2-cp36-cp36m-win32.whl", hash = "sha256:77d09a79f9739b97099d2952bbbf18eaa4eaf825362387acbb9552ec1b3fa228"},
+    {file = "psycopg2-2.9.2-cp36-cp36m-win_amd64.whl", hash = "sha256:f65cba7924363e0d2f416041b48ff69d559548f2cb168ff972c54e09e1e64db8"},
+    {file = "psycopg2-2.9.2-cp37-cp37m-win32.whl", hash = "sha256:b8816c6410fa08d2a022e4e38d128bae97c1855e176a00493d6ec62ccd606d57"},
+    {file = "psycopg2-2.9.2-cp37-cp37m-win_amd64.whl", hash = "sha256:26322c3f114de1f60c1b0febf8fdd595c221b4f624524178f515d07350a71bd1"},
+    {file = "psycopg2-2.9.2-cp38-cp38-win32.whl", hash = "sha256:77b9105ef37bc005b8ffbcb1ed6d8685bb0e8ce84773738aa56421a007ec5a7a"},
+    {file = "psycopg2-2.9.2-cp38-cp38-win_amd64.whl", hash = "sha256:91c7fd0fe9e6c118e8ff5b665bc3445781d3615fa78e131d0b4f8c85e8ca9ec8"},
+    {file = "psycopg2-2.9.2-cp39-cp39-win32.whl", hash = "sha256:a761b60da0ecaf6a9866985bcde26327883ac3cdb90535ab68b8d784f02b05ef"},
+    {file = "psycopg2-2.9.2-cp39-cp39-win_amd64.whl", hash = "sha256:fd7ddab7d6afee4e21c03c648c8b667b197104713e57ec404d5b74097af21e31"},
+    {file = "psycopg2-2.9.2.tar.gz", hash = "sha256:a84da9fa891848e0270e8e04dcca073bc9046441eeb47069f5c0e36783debbea"},
 ]
 pyasn1 = [
     {file = "pyasn1-0.4.8-py2.4.egg", hash = "sha256:fec3e9d8e36808a28efb59b489e4528c10ad0f480e57dcc32b4de5c9d8c9fdf3"},
