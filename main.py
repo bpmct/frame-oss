@@ -13,16 +13,26 @@ load_dotenv()
 
 # Supabase stuff
 # TODO: make optional for simple self-hosted installs
-from supabase import create_client, Client
-url: str = os.environ.get("SUPABASE_URL")
-key: str = os.environ.get("SUPABASE_KEY")
-supabase: Client = create_client(url, key)
+if os.getenv("USE_SUPABASE"):
+    from supabase import create_client, Client
+    url: str = os.environ.get("SUPABASE_URL")
+    key: str = os.environ.get("SUPABASE_KEY")
+    supabase: Client = create_client(url, key)
+
+# Database
+import psycopg2, sys
+conn = psycopg2.connect()
 
 app = Flask(__name__)
 
+# Do not show requests in logs
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.WARNING)
+
+
 @app.route("/")
 def hello_world():
-
     # Generate "Login with Google" link for Supabase
     google_url = "https://tkcpbdawrrhatvriturr.supabase.co/auth/v1/callback"
 
@@ -31,6 +41,9 @@ def hello_world():
 @app.route('/<path:text>', methods=['GET', 'POST'])
 def all_routes(text):
     if text.startswith('f'):
+        
+        print(text)
+
         # before we have a database haha
         if text == "fjsyDoKNNo":
             creds = None
