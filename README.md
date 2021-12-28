@@ -5,3 +5,7 @@ Digital photo frames powered by the web browser. Self-host or use [frames.bpmct.
 ## Recommended devices
 
 - Kindle Fire HD Tablet
+
+## Other devices / WIP
+
+- [Amazon Echo Show](https://github.com/bpmct/frame-oss-alexa)
