@@ -1,0 +1,27 @@
+{% set page_name = frame_data["name"] %} {% set plugin = 'web_frame' %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frame</title>
+    <link rel="stylesheet" href="/static/foundation/css/foundation.min.css" />
+    <link rel="stylesheet" href="/static/frame/frame.css" />
+  </head>
+  <body>
+    <div class="controls-nav">{% include "components/menu.jinja2" %}</div>
+
+    <div class="hd-webcam-container overlay">
+      <div class="iframe-cover"></div>
+      <iframe src="{{frame_data['url']}}" class="hd-webcam"></iframe>
+    </div>
+
+    <script src="/static/foundation/js/vendor/jquery.min.js"></script>
+    <script src="/static/foundation/js/vendor/what-input.js"></script>
+    <script src="/static/foundation/js/vendor/foundation.min.js"></script>
+
+    <script src="/static/frame/frame.js"></script>
+  </body>
+</html>

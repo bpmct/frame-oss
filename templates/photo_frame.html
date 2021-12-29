@@ -1,3 +1,5 @@
+{% set page_name = "All photos" %} {% set plugin = "photo_gallery_simple" %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,37 +11,7 @@
     <link rel="stylesheet" href="/static/frame/frame.css" />
   </head>
   <body>
-    <div class="controls-nav">
-      <br />
-      <h4>Switch mode:</h4>
-      <ul class="vertical menu">
-        <li class="is-active"><a href="">All photos</a></li>
-        <!-- <li><a href="">New photos (6)</a></li> -->
-      </ul>
-      <ul class="vertical dropdown menu" data-dropdown-menu>
-        <li>
-          <a href="#">Fire Island Cam</a>
-          <ul class="vertical menu nested">
-            <li>
-              <a href="fjsyDoKNNo_ferry_cam">Ferry Cam</a>
-            </li>
-            <li>
-              <a href="fjsyDoKNNo_palms_village_cam">Palms Village Cam</a>
-            </li>
-            <li>
-              <a href="fjsyDoKNNo_cjs_central_cam">CJs Central Cam</a>
-            </li>
-            <!-- ... -->
-          </ul>
-        </li>
-      </ul>
-      <div class="divider"></div>
-      <!-- <li><a href="#">Wolf Sanctuary Cam</a></li> -->
-      <ul class="vertical menu">
-        <li><a href="#" onclick="toggleFullScreen();">Full screen</a></li>
-        <li><a href="">Refresh for updates</a></li>
-      </ul>
-    </div>
+    <div class="controls-nav">{% include "components/menu.jinja2" %}</div>
 
     <!-- Wolf Conservation Center -->
     <!-- <iframe
@@ -72,12 +44,12 @@
           data-orbit
         >
           <ul class="orbit-container">
-            {% for image in google_photos %}
+            {% for imageURL in photos %}
             <li
               class="orbit-slide"
               loading="{{'eager' if loop.index < 9 else 'lazy' }}"
             >
-              <img class="orbit-image" src="{{ image }}" alt="Space" />
+              <img class="orbit-image" src="{{ imageURL }}" alt="Space" />
             </li>
             {% endfor %}
           </ul>

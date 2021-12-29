@@ -1,0 +1,41 @@
+<br />
+<h4>Switch mode:</h4>
+
+{% for page in menu %}
+
+<!--  -->
+
+{% if page.children %}
+
+{% set notSelected = (plugin != page.plugin) %}
+
+<ul class="vertical menu {{'dropdown' if notSelected}}" {{"data-dropdown-menu" if notSelected}}>
+  <li>
+    <a href="#">{{page.name}}</a>
+    <ul class="vertical menu {{'nested' if notSelected == false}}">
+      {% for subpage in page.children %}
+      <li class="{{'active' if subpage.name == page_name else ''}}">
+        <a href="{{subpage.url}}">{{subpage.name}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </li>
+</ul>
+{% else %}
+
+<ul class="vertical menu">
+  <li class="{{'active' if page.name == page_name else ''}}">
+    <a href="{{page.url}}">{{page.name}}</a>
+  </li>
+</ul>
+{% endif %}
+
+<!--  -->
+
+{% endfor %}
+
+<div class="divider"></div>
+<ul class="vertical menu">
+  <li><a href="#" onclick="toggleFullScreen();">Full screen</a></li>
+  <li><a href="">Refresh for updates</a></li>
+</ul>
