@@ -1,4 +1,3 @@
-from re import search
 from flask import Flask, render_template, redirect, abort, escape
 
 # Google Photos stuff
