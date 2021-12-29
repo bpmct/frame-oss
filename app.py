@@ -30,11 +30,11 @@ app = Flask(__name__)
 # Disable strict slashes to allow /slug and /slug/
 app.url_map.strict_slashes = False
 
-# Do not show requests in logs
-import logging
-logging.getLogger('googleapicliet.discovery_cache').setLevel(logging.ERROR)
-log = logging.getLogger('werkzeug')
-log.setLevel(logging.WARNING)
+# # Do not show requests in logs
+# import logging
+# logging.getLogger('googleapicliet.discovery_cache').setLevel(logging.ERROR)
+# log = logging.getLogger('werkzeug')
+# log.setLevel(logging.WARNING)
 
 def db_connect():
     connection = psycopg2.connect(os.environ.get("DATABASE_URL"))
