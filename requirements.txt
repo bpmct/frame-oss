@@ -2,5 +2,5 @@ Flask==2.0.2
 google_api_python_client==2.33.0
 google_auth_oauthlib==0.4.6
 protobuf==3.19.1
-psycopg2==2.9.2
+psycopg2-binary==2.9.2
 python-dotenv==0.19.2
