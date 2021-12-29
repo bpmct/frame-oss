@@ -22,9 +22,6 @@ if os.environ.get("USE_SUPABASE") == "true":
     key: str = os.environ.get("SUPABASE_KEY")
     supabase: Client = create_client(url, key)
 
-# Database
-import psycopg2, psycopg2.extras
-
 app = Flask(__name__)
 
 # Disable strict slashes to allow /slug and /slug/
@@ -37,6 +34,9 @@ app.url_map.strict_slashes = False
 # log.setLevel(logging.WARNING)
 
 def db_connect():
+    # Database
+    import psycopg2, psycopg2.extras
+
     connection = psycopg2.connect(os.environ.get("DATABASE_URL"))
     return connection;
 
