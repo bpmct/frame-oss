@@ -4,6 +4,7 @@ from flask import Flask, render_template, redirect, abort, escape
 # Google Photos stuff
 import os, os.path
 from dotenv import load_dotenv
+from main import app
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
