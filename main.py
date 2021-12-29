@@ -1,5 +1,5 @@
 from re import search
-from flask import Flask, render_template, redirect, abort
+from flask import Flask, render_template, redirect, abort, escape
 
 # Google Photos stuff
 import os, os.path
@@ -9,6 +9,8 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+
+import urllib.parse
 
 # Load from .env if exists
 load_dotenv()
@@ -41,7 +43,7 @@ def db_connect():
 
 def get_frame(slug):
     if os.environ.get("USE_SUPABASE") == "true":
-        request = supabase.table("frames").select("user, plugins").limit(1).eq("slug", slug).execute()
+        request = supabase.table("frames").select("slug", "user, plugins").limit(1).eq("slug", slug).execute()
         if len(request.get("data", [])) == 0:
             return None;
         else:
@@ -52,7 +54,7 @@ def get_frame(slug):
         cursor = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 
         # Look up frame in the database
-        cursor.execute("SELECT user, plugins FROM frames WHERE slug=%s", (slug,))
+        cursor.execute("SELECT slug, user, plugins FROM frames WHERE slug=%s", (slug,))
 
         the_frame = cursor.fetchone();
 
@@ -124,12 +126,28 @@ def use_google_photos(token, refresh_token):
 
     return build('photoslibrary', 'v1', credentials=creds, static_discovery=False)
 
-def generate_menu(frame, pluginsList):
+def generate_menu(frame, pluginConfig):
     # TODO: refactor on a per-plugin basis instead of all this inline logic
     menu = []
 
-    if "simple_photo_gallery" in pluginsList:
-        menu.append({"name": "All photos", url: ""})
+    frame_url = "/" + frame["slug"]
+
+    if "simple_photo_gallery" in frame["plugins"]:
+        menu.append({"name": "All photos", "plugin": "simple_photo_gallery", "url": frame_url})
+
+    if "web_frame" in frame["plugins"]:
+        # main nav title, defaults to "Web frame"
+        webFrameTitle = pluginConfig["web_frame"].get("navTitle", "Web frame");
+
+        webFrameChildren = [];
+
+        for child in pluginConfig["web_frame"]["frames"]:
+            child_url = frame_url + "/web_frame/" + urllib.parse.quote(child["name"].lower());
+            webFrameChildren.append({"name": child["name"], "url": child_url})
+
+        menu.append({"name": webFrameTitle, "plugin": "web_frame", "children": webFrameChildren})        
+    
+    return menu
 
 @app.route("/")
 def hello_world():
@@ -189,11 +207,15 @@ def photo_frame(slug):
     except HttpError as err:
         print(err)
 
-    return render_template("photo_frame.html", google_photos=urls)
+    return render_template("photo_frame.html", photos=urls, menu=generate_menu(frame, plugin_config))
 
 @app.route('/<path:slug>/<path:plugin>', methods=['GET', 'POST'])
-@app.route('/<path:slug>/<path:plugin>/<path:params>', methods=['GET', 'POST'])
-def plugin(slug, plugin, params=""): 
+@app.route('/<path:slug>/<path:plugin>/<path:subpage>', methods=['GET', 'POST'])
+def plugin(slug, plugin, subpage=""):
+
+    # URL Decode
+    subpage = urllib.parse.unquote(subpage)
+
     if plugin == "web_frame": 
         frame = get_frame(slug)
         if frame is None:
@@ -207,14 +229,21 @@ def plugin(slug, plugin, params=""):
 
         web_frame_config = plugin_config["web_frame"]
 
-        print(web_frame_config)
-        
         if web_frame_config is None:
             # TODO: potentially use a default website
             return "Unable to fetch this frame's configuration for the web_frame plugin"
+        if subpage == "":
+            return "No frame name specified."
         if not web_frame_config["frames"]:
             return "No frames are configured"
 
-        return "so far so good"
+        # Check if the name specified matches one in the config (case insensitive)
+        searchForWebFrame = next((item for item in web_frame_config["frames"] if (item["name"]).lower() == subpage.lower()), None)
+
+        if searchForWebFrame == None:
+            return "No configuration for frame name: " + escape(subpage)
+
+        return render_template("web_frame.html", frame_data=searchForWebFrame, menu=generate_menu(frame, plugin_config));
+
     else:
         return "Unsupported plugin"
