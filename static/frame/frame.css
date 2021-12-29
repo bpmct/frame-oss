@@ -24,9 +24,14 @@ body {
   left: 0px;
   top: 0px;
   /* disable clicking into iFrame */
-  pointer-events: none;
+  pointer-events: all;
   /* for debugging: */
   /* background: rgb(221 13 13 / 20%); */
+}
+
+.dark-overlay {
+  display: none;
+  background: rgb(0 0 0 / 60%);
 }
 
 iframe.hd-webcam {
@@ -34,7 +39,6 @@ iframe.hd-webcam {
   width: calc(100vh * 1.7778);
   height: 100vh;
   overflow: none;
-  pointer-events: none;
 }
 
 .fullscreen-image-slider .orbit-image {
@@ -61,6 +65,21 @@ iframe.hd-webcam {
   height: 1px;
   right: 100px;
   top: 100px;
+}
+
+.menu-button {
+  z-index: 5;
+  display: block;
+  position: absolute;
+  color: #fff;
+  top: 18px;
+  line-height: 22px;
+  padding: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background: white;
+  text-align: center;
+  left: 18px;
 }
 
 .new-photos {

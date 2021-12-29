@@ -1,9 +1,29 @@
 $(document).foundation();
 
 let controls = $(".controls-nav");
+let menuButton = $(".menu-button");
+let darkOverlay = $(".dark-overlay");
 
 toggleMenu = () => {
-  controls.is(":visible") ? controls.fadeOut(100) : controls.fadeIn(100);
+  if (controls.is(":visible")) {
+    // hide menu
+    controls.fadeOut(100);
+
+    // show menu button, if exists
+    menuButton.length && menuButton.fadeIn(100);
+
+    // hide dark overlay, if exists
+    darkOverlay.length && darkOverlay.fadeOut(300);
+  } else {
+    // show menu
+    controls.fadeIn(100);
+
+    // hide menu button, if exists
+    menuButton.length && menuButton.fadeOut(100);
+
+    // show menu overlay, if exists
+    darkOverlay.length && darkOverlay.fadeIn(300);
+  }
 };
 
 toggleFullScreen = () => {

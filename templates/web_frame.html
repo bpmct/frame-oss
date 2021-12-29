@@ -14,7 +14,15 @@
     <div class="controls-nav">{% include "components/menu.jinja2" %}</div>
 
     <div class="hd-webcam-container overlay">
+      {% if frame_data['interactive'] == true %}
+      <div class="menu-button">
+        <!-- this will auto show because it is in frame -->
+        <a id="toggle-menu" href="#">Show menu</a>
+      </div>
+      <div class="iframe-cover dark-overlay"></div>
+      {% else %}
       <div class="iframe-cover"></div>
+      {% endif %}
       <iframe src="{{frame_data['url']}}" class="hd-webcam"></iframe>
     </div>
 
